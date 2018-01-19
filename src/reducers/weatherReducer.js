@@ -1,4 +1,9 @@
-import { combineReducers } from 'redux';
+import {
+  GET_LOCATION,
+  GET_WEATHER,
+  UPDATE_LOCATION,
+  UPDATE_WEATHER
+} from '../actions/types'
 
 const initialState = {
   loadingLocation: false,
@@ -10,26 +15,21 @@ const initialState = {
 const weatherReducer = (state=initialState, action) => {
 
   switch (action.type) {
-    case 'GET_LOCATION':
+    case GET_LOCATION:
       return { ...state, loadingLocation: true };
 
-    case 'UPDATE_LOCATION':
+    case UPDATE_LOCATION:
       return { ...state, location: action.payload, loadingLocation: false };
 
-    case 'GET_WEATHER':
+    case GET_WEATHER:
       return { ...state, loadingWeather: true };
 
-    case 'UPDATE_WEATHER':
+    case UPDATE_WEATHER:
       return { ...state, weather: action.payload, loadingWeather: false, };
 
     default:
       return state;
   }
-
 }
 
-const rootReducer = combineReducers({
-  weather: weatherReducer,
-});
-
-export default rootReducer
+export default weatherReducer

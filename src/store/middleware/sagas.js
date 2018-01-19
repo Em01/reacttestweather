@@ -1,5 +1,5 @@
 import { takeEvery, put, call, select } from 'redux-saga/effects';
-import * as weatherActions from './actions';
+import * as weatherActions from '../../actions/weatherActions';
 
 
 function *getLocation(action) {

@@ -1,7 +1,7 @@
 import { createStore, applyMiddleware, compose } from 'redux';
-import rootReducer from './reducer';
+import rootReducer from '../reducers/index';
 import createSagaMiddleware from 'redux-saga';
-import weatherSaga from './sagas';
+import weatherSaga from './middleware/sagas';
 
 const initialState = {}
 const enhancers = []

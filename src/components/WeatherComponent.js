@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import store from './configureStore';
-import * as weatherActions from './actions';
+import logo from '../images/logo.svg';
+import store from '../store/configureStore';
+import * as weatherActions from '../actions/weatherActions';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 

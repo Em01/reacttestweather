@@ -1,0 +1,4 @@
+export const GET_LOCATION = 'GET_LOCATION'
+export const GET_WEATHER = 'GET_WEATHER'
+export const UPDATE_LOCATION = 'UPDATE_LOCATION'
+export const UPDATE_WEATHER = 'UPDATE_WEATHER'
