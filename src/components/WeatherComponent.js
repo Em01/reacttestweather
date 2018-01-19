@@ -8,6 +8,10 @@ import { connect } from 'react-redux';
 
 class WeatherComponent extends Component {
 
+  componentDidMount() {
+    this.props.weatherActions.getLocation()
+  }
+
   render() {
     return (
       <div>
@@ -20,6 +24,7 @@ class WeatherComponent extends Component {
 
 
 const mapStateToProps = (state) => {
+  console.log(state, 'state')
   return {
     loadingWeather: state.weather.loadingWeather,
     loadingLocation: state.weather.loadingLocation,
