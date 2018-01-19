@@ -3,30 +3,19 @@ import {
   GET_WEATHER,
   GET_WEATHER_FAILED,
   GET_LOCATION_FAILED,
-  GET_WEATHER_SUCCESS,
-  GET_LOCATION_SUCCESS,
   UPDATE_LOCATION,
   UPDATE_WEATHER
 } from './types'
 
 export const getLocation = () => {
-  console.log('get location')
     return {
-        type: GET_LOCATION,
-    }
-};
-
-export const getLocationSuccess = (payload) => {
-  console.log('get location succ')
-    return {
-        type: GET_LOCATION_SUCCESS,
-        payload
+        type: GET_LOCATION
     }
 };
 
 export const getWeather = () => {
     return {
-        type: GET_WEATHER,
+        type: GET_WEATHER
     }
 };
 
@@ -56,4 +45,4 @@ export const getLocationFailed = (payload) => {
     type: GET_LOCATION_FAILED,
     payload
   }
-}
+};

@@ -5,8 +5,6 @@ import {
   UPDATE_WEATHER,
   GET_WEATHER_FAILED,
   GET_LOCATION_FAILED,
-  GET_WEATHER_SUCCESS,
-  GET_LOCATION_SUCCESS,
 } from '../actions/types'
 
 const initialState = {
@@ -41,17 +39,9 @@ const weatherReducer = (state=initialState, action) => {
     case GET_LOCATION_FAILED:
       return { ...state, error: action.payload, locationFetchState: 'FAILED', loadingLocation: false, };
 
-    case GET_WEATHER_SUCCESS:
-      return { ...state, weatherFetchState: 'SUCCESS', loadingWeather: false, };
-
-    case GET_LOCATION_SUCCESS:
-      return { ...state, location: action.payload, locationFetchState: 'SUCCESS', loadingLocation: false, };
-
-
-
     default:
       return state;
   }
-}
+};
 
 export default weatherReducer
