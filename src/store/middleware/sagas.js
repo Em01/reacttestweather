@@ -1,5 +1,7 @@
 import { takeEvery, put, call, select } from 'redux-saga/effects';
 import * as weatherActions from '../../actions/weatherActions';
+import * as locationActions from '../../actions/locationActions';
+
 import {
   GET_LOCATION,
   GET_WEATHER,
@@ -19,11 +21,11 @@ function *getLocation(action) {
     } catch(error) {
       yield put({type: GET_LOCATION_FAILED, payload: error});
     }
-    yield* getWeather(weatherActions.getLocation());
+    yield* getWeather(locationActions.getLocation());
 }
 
 function *getWeather(action) {
-  const getCoords = state => state.weather.location.coords;
+  const getCoords = state => state.location.locationData.coords;
   const coords = yield select(getCoords);
   try {
     const weather = yield call(getWeatherData, coords);

@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import logo from '../images/logo.svg';
 import store from '../store/configureStore';
 import * as weatherActions from '../actions/weatherActions';
+import * as locationActions from '../actions/locationActions';
+
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
@@ -9,7 +11,7 @@ import { connect } from 'react-redux';
 class WeatherComponent extends Component {
 
   componentDidMount() {
-    this.props.weatherActions.getLocation()
+    this.props.locationActions.getLocation()
   }
 
   loading() {
@@ -33,17 +35,20 @@ class WeatherComponent extends Component {
 
 
 const mapStateToProps = (state) => {
+  console.log(state, 'state')
   return {
     loadingWeather: state.weather.loadingWeather,
-    loadingLocation: state.weather.loadingLocation,
-    location: state.weather.location,
-    weather: state.weather.weather
+    loadingLocation: state.location.loadingLocation,
+    locationData: state.location.locationData,
+    weatherData: state.weather.weatherData
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    weatherActions: bindActionCreators(weatherActions, dispatch)
+    weatherActions: bindActionCreators(weatherActions, dispatch),
+    locationActions: bindActionCreators(locationActions, dispatch),
+
   }
 }
 
