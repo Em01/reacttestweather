@@ -1,6 +1,28 @@
+var ReactDOM = require('react-dom');
+
 
 export function getLocationData() {
   return new Promise((resolve, reject) => {
     navigator.geolocation && navigator.geolocation.getCurrentPosition(resolve, reject);
   });
+}
+
+export function getReverseGeolocation(coords) {
+  var latlng = {
+    lat: coords.latitude,
+    lng: coords.longitude
+  }
+
+  var geocoder = new window.google.maps.Geocoder()
+  return new Promise(function(resolve, reject) {
+
+    geocoder.geocode({ 'latLng': latlng }, function (results, status) {
+
+      if (status == window.google.maps.GeocoderStatus.OK) {
+        resolve(results[4].formatted_address)
+      } else {
+        reject('could not geocode '+status)
+      }
+    })
+  })
 }

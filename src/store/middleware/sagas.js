@@ -8,11 +8,15 @@ import {
   GET_WEATHER_FAILED,
   GET_LOCATION_FAILED,
   UPDATE_LOCATION,
-  UPDATE_WEATHER
+  UPDATE_WEATHER,
+  UPDATE_CITY,
+  GET_CITY,
+  GET_CITY_FAILED
 } from '../../actions/types';
 
 import { getWeatherData } from '../../services/Weather';
 import { getLocationData } from '../../services/Location';
+import { getReverseGeolocation } from '../../services/Location'
 
 function *getLocation(action) {
     try {
@@ -21,7 +25,7 @@ function *getLocation(action) {
     } catch(error) {
       yield put({type: GET_LOCATION_FAILED, payload: error});
     }
-    yield* getWeather(locationActions.getLocation());
+    yield* getCity(locationActions.getLocation());
 }
 
 function *getWeather(action) {
@@ -35,9 +39,25 @@ function *getWeather(action) {
   }
 }
 
+function *getCity(action) {
+  const getCoords = state => state.location.locationData.coords;
+  const coords = yield select(getCoords);
+  try {
+    const city = yield call(getReverseGeolocation, coords)
+    yield put({type: UPDATE_CITY, payload: city});
+
+  } catch(error) {
+    yield put({type: GET_CITY_FAILED, payload: error});
+  }
+  yield* getWeather(locationActions.getLocation());
+
+}
+
 function *weatherSaga() {
     yield takeEvery(GET_LOCATION, getLocation);
     yield takeEvery(GET_WEATHER, getWeather);
+    yield takeEvery(GET_CITY, getCity);
+
 }
 
 

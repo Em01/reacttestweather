@@ -6,6 +6,7 @@ import {
 
 const initialState = {
   loadingWeather: false,
+  loadedWeather: false,
   weatherData: {},
   error: null,
   weatherFetchState: 'NONE' ,
@@ -19,7 +20,7 @@ const weatherReducer = (state=initialState, action) => {
       return { ...state, loadingWeather: true };
 
     case UPDATE_WEATHER:
-      return { ...state, weatherData: action.payload, loadingWeather: false, };
+      return { ...state, weatherData: action.payload, loadingWeather: false, loadedWeather: true };
 
     case GET_WEATHER_FAILED:
       return { ...state, error: action.payload, weatherFetchState: 'FAILED', loadingWeather: false, };

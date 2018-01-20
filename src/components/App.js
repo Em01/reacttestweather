@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import ReactDOM from 'react-dom'
+
 import logo from '../images/logo.svg';
 import '../styles/components/App.css';
 import WeatherComponent from './WeatherComponent';

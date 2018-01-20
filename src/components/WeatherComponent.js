@@ -14,11 +14,35 @@ class WeatherComponent extends Component {
     this.props.locationActions.getLocation()
   }
 
+  description() {
+    return this.props.weatherData.weather[0].description
+  }
+
+  temperature() {
+    console.log(this.props, 'props')
+    return this.props.weatherData.main.temp.toFixed(1)
+  }
+
+  humidity() {
+    return this.props.weatherData.main.humidity
+  }
+
+
   loading() {
     console.log(this.props)
     if(this.props.loadingWeather || this.props.loadingLocation) {
       return (
         <h1>LOADING...</h1>
+      )
+    } else if(this.props.loadedWeather){
+      return (
+        <div>
+          <h2>{this.props.city}</h2>
+          <div>{this.description()}</div>
+          <img src={require('../images/sun.png')}/>
+          <div>{this.temperature() + ' Celsius'}</div>
+          <div>{this.humidity() + ' %'}</div>
+        </div>
       )
     }
   }
@@ -27,6 +51,8 @@ class WeatherComponent extends Component {
     return (
       <div>
         <h1>The weather</h1>
+
+
         {this.loading()}
       </div>
     );
@@ -35,12 +61,13 @@ class WeatherComponent extends Component {
 
 
 const mapStateToProps = (state) => {
-  console.log(state, 'state')
   return {
+    loadedWeather: state.weather.loadedWeather,
     loadingWeather: state.weather.loadingWeather,
     loadingLocation: state.location.loadingLocation,
     locationData: state.location.locationData,
-    weatherData: state.weather.weatherData
+    weatherData: state.weather.weatherData,
+    city: state.location.city
   }
 }
 
