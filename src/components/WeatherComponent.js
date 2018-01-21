@@ -8,7 +8,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
 
-class WeatherComponent extends Component {
+export class WeatherComponent extends Component {
 
   componentDidMount() {
     this.props.locationActions.getLocation()

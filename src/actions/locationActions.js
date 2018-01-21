@@ -8,23 +8,20 @@ import {
 } from './types'
 
 export const getCity = () => {
-  // console.log(payload, 'p1')
     return {
-        type: GET_CITY,
-        // payload
+        type: GET_CITY
     }
 };
 
 export const updateCity = (payload) => {
-  // console.log(payload, 'p1')
     return {
-        type: GET_CITY,
+        type: UPDATE_CITY,
+        // type: GET_CITY,
         payload
     }
 };
 
 export const getCityFailed = (payload) => {
-  console.log(payload, 'p')
     return {
         type: GET_CITY_FAILED,
         payload

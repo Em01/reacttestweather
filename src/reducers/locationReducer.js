@@ -15,7 +15,6 @@ const initialState = {
   locationFetchState: 'NONE',
 };
 
-//TODO: Split weather and location into two reducers/actions
 const locationReducer = (state=initialState, action) => {
 
   switch (action.type) {

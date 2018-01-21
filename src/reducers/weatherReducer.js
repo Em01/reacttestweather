@@ -12,7 +12,6 @@ const initialState = {
   weatherFetchState: 'NONE' ,
 };
 
-//TODO: Split weather and location into two reducers/actions
 const weatherReducer = (state=initialState, action) => {
 
   switch (action.type) {
@@ -23,7 +22,7 @@ const weatherReducer = (state=initialState, action) => {
       return { ...state, weatherData: action.payload, loadingWeather: false, loadedWeather: true };
 
     case GET_WEATHER_FAILED:
-      return { ...state, error: action.payload, weatherFetchState: 'FAILED', loadingWeather: false, };
+      return { ...state, error: action.payload, weatherFetchState: 'FAILED', loadingWeather: false };
 
     default:
       return state;
