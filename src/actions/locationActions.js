@@ -34,6 +34,7 @@ export const getLocation = () => {
 };
 
 export const updateLocation = (payload) => {
+
     return {
         type: UPDATE_LOCATION,
         payload
