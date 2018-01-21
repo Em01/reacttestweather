@@ -25,7 +25,6 @@ module.exports = {
     "rules": {
       "no-duplicate-imports": "off",
       "no-unused-vars": "off",
-      // "no-undef": "off",
       "no-console": "off",
       "react/jsx-filename-extension": 0
     }

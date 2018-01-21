@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import logo from '../images/logo.svg';
+// import logo from '../images/logo.svg';
 import store from '../store/configureStore';
 import * as weatherActions from '../actions/weatherActions';
 import * as locationActions from '../actions/locationActions';
@@ -27,6 +27,11 @@ class WeatherComponent extends Component {
     return this.props.weatherData.main.humidity
   }
 
+  weatherImage() {
+    //if temp >= 18 return sunshine
+    //if temp <18 return clouds
+    //if
+  }
 
   loading() {
     console.log(this.props)
@@ -60,7 +65,7 @@ class WeatherComponent extends Component {
 }
 
 
-const mapStateToProps = (state) => {
+export const mapStateToProps = (state) => {
   return {
     loadedWeather: state.weather.loadedWeather,
     loadingWeather: state.weather.loadingWeather,
@@ -71,7 +76,7 @@ const mapStateToProps = (state) => {
   }
 }
 
-const mapDispatchToProps = (dispatch) => {
+export const mapDispatchToProps = (dispatch) => {
   return {
     weatherActions: bindActionCreators(weatherActions, dispatch),
     locationActions: bindActionCreators(locationActions, dispatch),

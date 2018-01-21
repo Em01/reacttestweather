@@ -5,11 +5,10 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
+    "test": "jest",
     "eject": "react-scripts eject"
   },
   "dependencies": {
-    "google-maps-react": "^1.1.2",
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
     "react-redux": "^5.0.6",
@@ -17,15 +16,24 @@
     "react-router-redux": "^5.0.0-alpha.8",
     "react-scripts": "1.0.14",
     "redux": "^3.7.2",
-    "redux-saga": "^0.16.0"
+    "redux-saga": "^0.16.0",
+    "underscore": "^1.8.3"
   },
   "devDependencies": {
-    "babel-eslint": "^8.2.1",
+    "babel-core": "^6.26.0",
+    "babel-preset-react-app": "^3.1.1",
+    "babel-runtime": "^6.26.0",
     "enzyme": "^3.3.0",
+    "enzyme-adapter-react-16": "^1.1.1",
+    "enzyme-to-json": "^3.3.0",
     "eslint": "^4.15.0",
     "eslint-plugin-import": "^2.8.0",
     "eslint-plugin-jsx-a11y": "^6.0.3",
     "eslint-plugin-react": "^7.5.1",
-    "jest": "^22.1.2"
+    "jest": "^22.1.2",
+    "jest-cli": "^22.1.4",
+    "react-addons-test-utils": "^15.6.2",
+    "react-test-renderer": "^16.2.0",
+    "redux-mock-store": "^1.4.0"
   }
 }
