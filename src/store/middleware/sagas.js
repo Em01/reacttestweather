@@ -45,7 +45,6 @@ function *getCity(action) {
   try {
     const city = yield call(getReverseGeolocation, coords)
     yield put({type: UPDATE_CITY, payload: city});
-
   } catch(error) {
     yield put({type: GET_CITY_FAILED, payload: error});
   }
@@ -57,7 +56,6 @@ function *weatherSaga() {
     yield takeEvery(GET_LOCATION, getLocation);
     yield takeEvery(GET_WEATHER, getWeather);
     yield takeEvery(GET_CITY, getCity);
-
 }
 
 

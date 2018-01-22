@@ -57,13 +57,13 @@ class Weather extends Component {
       loadedWeather,
       forecast
     } = this.props;
-
+    console.log(this.props, 'p')
     if(loadingWeather || loadingLocation) {
       return (
         <Spinner />
       );
     } else if(loadedWeather) {
-
+      console.log('loadedWeather')
       const details = getMainWeather(forecast);
       const weatherClass = weatherImage(details.weather[0].id.toString());
       const upcomingItems = getUpcomingWeather(forecast);
@@ -78,16 +78,19 @@ class Weather extends Component {
         </div>
       );
     }
-    else {
+    else if(this.props.weatherFetchState === 'FAILED') {
+      return (
+         <WeatherError />
+       )
+    } else {
       return;
     }
   }
-  // {this.loading()}
 
   render() {
     return (
       <div className="Weather">
-      <WeatherError />
+        {this.loading()}
      </div>
     );
   }
@@ -100,7 +103,8 @@ export const mapStateToProps = (state) => {
     loadedWeather: weather.loadedWeather,
     loadingWeather: weather.loadingWeather,
     loadingLocation: location.loadingLocation,
-    city: location.city
+    city: location.city,
+    weatherFetchState: weather.weatherFetchState
   }
 }
 

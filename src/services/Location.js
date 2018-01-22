@@ -8,7 +8,6 @@ export function getLocationData() {
 }
 
 export function getReverseGeolocation(coords) {
-  console.log(coords)
   var latlng = {
     lat: coords.latitude,
     lng: coords.longitude
@@ -22,7 +21,7 @@ export function getReverseGeolocation(coords) {
         const address = results.length >= 4 ? results[4].formatted_address : _.first(results).formatted_address
         resolve(address)
       } else {
-        reject('could not geocode '+status)
+        reject(status)
       }
     })
   })

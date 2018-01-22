@@ -1,7 +1,7 @@
 import {
   GET_WEATHER,
   GET_WEATHER_FAILED,
-  UPDATE_WEATHER
+  UPDATE_WEATHER,
 } from './types'
 
 export const getWeather = () => {
