@@ -1,8 +1,4 @@
-import {
-  GET_CITY,
-  UPDATE_CITY,
-  GET_CITY_FAILED
-} from '../actions/types'
+import { GET_CITY, UPDATE_CITY, GET_CITY_FAILED } from '../actions/types';
 
 const initialState = {
   loadingCity: false,
@@ -20,11 +16,11 @@ const cityReducer = (state=initialState, action) => {
       return { ...state, name: action.payload, loadingCity: false };
 
     case GET_CITY_FAILED:
-      return { ...state, error: action.payload, loading: false, loadingCity: false };
+      return { ...state, error: action.payload, loadingCity: false };
 
     default:
       return state;
   }
 };
 
-export default cityReducer
+export default cityReducer;

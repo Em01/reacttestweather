@@ -17,11 +17,11 @@ export class App extends Component {
   }
 
   render() {
-    const  { loadedWeather } = this.props;
+    const  { weatherFetchState } = this.props;
     return (
       <div className="App">
         <ErrorBoundary>
-          { loadedWeather ? <Weather /> : <Spinner /> }
+          { weatherFetchState === "SUCCESS" ? <Weather /> : <Spinner /> }
         </ErrorBoundary>
       </div>
     );
@@ -29,8 +29,9 @@ export class App extends Component {
 }
 
 export const mapStateToProps = (state) => {
+  // console.l
   return {
-    loadedWeather: state.weather.loadedWeather,
+    weatherFetchState: state.weather.weatherFetchState
   }
 }
 

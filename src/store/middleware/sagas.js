@@ -17,33 +17,32 @@ import {
 
 import { getWeatherData } from '../../services/Weather';
 import { getLocationData } from '../../services/Location';
-import { getReverseGeolocation } from '../../services/Location'
+import { getReverseGeolocation } from '../../services/Location';
 
-function *getLocation(action) {
-    try {
-      const location = yield call(getLocationData);
-      yield put({type: UPDATE_LOCATION, payload: location});
-    } catch(error) {
-      yield put({type: GET_LOCATION_FAILED, payload: error});
-    }
-    yield* getCity(locationActions.getLocation());
+export const getCoords = state => state.location.locationData.coords;
+
+export function *getLocation(action) {
+  try {
+    const location = yield call(getLocationData);
+    yield put({type: UPDATE_LOCATION, payload: location});
+  } catch(error) {
+    yield put({type: GET_LOCATION_FAILED, payload: error});
+  }
+  yield* getCity(locationActions.getLocation());
 }
 
-function *getCity(action) {
-  const getCoords = state => state.location.locationData.coords;
+export function *getCity(action) {
   const coords = yield select(getCoords);
   try {
-    const city = yield call(getReverseGeolocation, coords)
+    const city = yield call(getReverseGeolocation, coords);
     yield put({type: UPDATE_CITY, payload: city});
   } catch(error) {
     yield put({type: GET_CITY_FAILED, payload: error});
   }
   yield* getWeather(locationActions.getLocation());
-
 }
 
-function *getWeather(action) {
-  const getCoords = state => state.location.locationData.coords;
+export function *getWeather(action) {
   const coords = yield select(getCoords);
   try {
     const weather = yield call(getWeatherData, coords);
@@ -54,10 +53,10 @@ function *getWeather(action) {
 }
 
 function *weatherSaga() {
-    yield takeEvery(GET_LOCATION, getLocation);
-    yield takeEvery(GET_WEATHER, getWeather);
-    yield takeEvery(GET_CITY, getCity);
+  yield takeEvery(GET_LOCATION, getLocation);
+  yield takeEvery(GET_WEATHER, getWeather);
+  yield takeEvery(GET_CITY, getCity);
 }
 
 
-export default weatherSaga
+export default weatherSaga;

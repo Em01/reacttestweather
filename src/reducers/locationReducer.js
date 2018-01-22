@@ -2,7 +2,7 @@ import {
   GET_LOCATION,
   UPDATE_LOCATION,
   GET_LOCATION_FAILED
-} from '../actions/types'
+} from '../actions/types';
 
 const initialState = {
   loadingLocation: false,
@@ -28,4 +28,4 @@ const locationReducer = (state=initialState, action) => {
   }
 };
 
-export default locationReducer
+export default locationReducer;

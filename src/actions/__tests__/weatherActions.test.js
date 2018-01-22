@@ -1,5 +1,5 @@
-import * as actions from '../weatherActions'
-import * as types from '../types'
+import * as actions from '../weatherActions';
+import * as types from '../types';
 
 describe('Weather Action Creator', () => {
 
@@ -8,9 +8,9 @@ describe('Weather Action Creator', () => {
       const expectedAction = {
         type: types.GET_WEATHER
       }
-      expect(actions.getWeather()).toEqual(expectedAction)
-    })
-  })
+      expect(actions.getWeather()).toEqual(expectedAction);
+    });
+  });
 
   describe('updateWeather', () => {
     it('creates an action to updateCity', () => {
@@ -21,19 +21,18 @@ describe('Weather Action Creator', () => {
         type: types.UPDATE_WEATHER,
         payload: weatherData
       }
-      expect(actions.updateWeather(weatherData)).toEqual(expectedAction)
-    })
-  })
+      expect(actions.updateWeather(weatherData)).toEqual(expectedAction);
+    });
+  });
 
   describe('getWeatherFailed', () => {
     it('creates an action for getCityFailed', () => {
-      const error = "error text"
+      const error = "error text";
       const expectedAction = {
         type: types.GET_WEATHER_FAILED,
         payload: error
       }
-
-      expect(actions.getWeatherFailed(error)).toEqual(expectedAction)
-    })
-  })
-})
+      expect(actions.getWeatherFailed(error)).toEqual(expectedAction);
+    });
+  });
+});
