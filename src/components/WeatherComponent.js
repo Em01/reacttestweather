@@ -29,31 +29,28 @@ class WeatherComponent extends Component {
   }
 
   getMainItem () {
-    const getItems = this.props.weatherData.list.slice(0, 4)
+    const getItems = this.props.weatherData.list.slice(0, 3)
     const mainWeather = _.first(getItems)
     return mainWeather
   }
 
   getOtherItems() {
-    const getOtherItems = this.props.weatherData.list.slice(0, 4)
+    const getOtherItems = this.props.weatherData.list.slice(0, 3)
     return getOtherItems
   }
 
   renderItems(otherItems) {
-    // const weatherClass = weatherImage(this.props.weatherData.cod.toString())
-
     return _.map(otherItems, (name, id) => {
-      // const = weatherImage(name.cod.toString())
-      console.log(name, id, 'test')
       return (
-        <div>
+        <div className="Item">
+
         <img className="Icon" src={weatherImage(name.weather[0].id.toString()).image}/>
         <div className="Details">
           <p>{this.temperature(name) + ' Celsius'}</p>
           <p>{this.humidity(name) + ' % Humidity'}</p>
           <p>{name.dt_txt}</p>
         </div>
-        </div>
+      </div>
 
       )
     });
@@ -74,9 +71,9 @@ class WeatherComponent extends Component {
       const mainItem = this.getMainItem()
       const otherItems = this.getOtherItems()
       return (
-        <div clasName="Test">
-          <div className={weatherClass.name}>
-            <h2 className="City">{this.props.city}</h2>
+        <div className={weatherClass.name}>
+          <div>
+            <h1 className="City">{this.props.city}</h1>
             <div className="Description">{this.description(mainItem)}</div>
             <img className="Icon" src={weatherImage(this.props.weatherData.cod.toString()).image}/>
             <div className="Details">
@@ -84,23 +81,37 @@ class WeatherComponent extends Component {
             <p>{this.humidity(mainItem) + ' % Humidity'}</p>
           </div>
           </div>
+
+          <h2 className="Soon">Coming up...</h2>
+
+          <div className="Wrapper">
           {this.renderItems(otherItems)}
-
-
-
-
         </div>
+        </div>
+
+
+
+
       )
     }
   }
-
+// </div>
+// return (
+//   <div className="WeatherComponent">
+//     {this.loading()}
+//   </div>
 
   render() {
     return (
-      <div className="WeatherComponent">
-        {this.loading()}
-      </div>
-    );
+
+    <div className="Loading">
+      <img src={require('../images/cloud-large.png')}/>
+      <h2 className="LoadingText">Loading...</h2>
+    </div>
+    )
+
+
+    // );
   }
 }
 
