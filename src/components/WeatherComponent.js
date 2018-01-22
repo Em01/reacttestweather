@@ -1,22 +1,23 @@
 import React, { Component } from 'react';
-// import logo from '../images/logo.svg';
 import store from '../store/configureStore';
 import * as weatherActions from '../actions/weatherActions';
 import * as locationActions from '../actions/locationActions';
 
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { weatherImage } from './helpers/weatherImage'
+import { weatherImage } from './helpers/weatherImage';
+import '../styles/components/WeatherComponent.css';
 
 class WeatherComponent extends Component {
 
   componentDidMount() {
-    // console.log(this.props, 'test')
     this.props.locationActions.getLocation()
   }
 
   description() {
-    return this.props.weatherData.weather[0].description
+    const description = this.props.weatherData.weather[0].description
+    const formatDescription = description.charAt(0).toUpperCase();
+    return formatDescription + description.slice(1);
   }
 
   temperature() {
@@ -27,35 +28,36 @@ class WeatherComponent extends Component {
     return this.props.weatherData.main.humidity
   }
 
-
   loading() {
-    // const imageType = this.weatherImage()
+
     if(this.props.loadingWeather || this.props.loadingLocation) {
       return (
-        <h1>LOADING...</h1>
+        <div className="Loading">
+          <img src={require('../images/cloud-large.png')}/>
+        </div>
       )
     } else if(this.props.loadedWeather){
-      // const imageType = this.weatherImage()
-      // console.log(imageType,'image type')
-
+      const weatherClass = weatherImage(this.props.weatherData.cod.toString())
       return (
-        <div>
-          <h2>{this.props.city}</h2>
-          <div>{this.description()}</div>
-          <img src={weatherImage(this.props.weatherData.cod.toString())}/>
-          <div>{this.temperature() + ' Celsius'}</div>
-          <div>{this.humidity() + ' %'}</div>
+        <div className={weatherClass.name}>
+          <h2 className="City">{this.props.city}</h2>
+          <div className="Description">{this.description()}</div>
+          <img className="Icon" src={weatherImage(this.props.weatherData.cod.toString()).image}/>
+          <div className="Details">
+          <p>{this.temperature() + ' Celsius'}</p>
+          <p>{this.humidity() + ' % Humidity'}</p>
+        </div>
         </div>
       )
     }
   }
 
+
   render() {
     return (
-      <div>
-        <h1>The weather</h1>
-
+      <div className="WeatherComponent">
         {this.loading()}
+        <h2>Please wait while we get your weather!"</h2>
       </div>
     );
   }
@@ -74,7 +76,6 @@ export const mapStateToProps = (state) => {
 }
 
 export const mapDispatchToProps = (dispatch) => {
-  console.log('mdtp')
   return {
     weatherActions: bindActionCreators(weatherActions, dispatch),
     locationActions: bindActionCreators(locationActions, dispatch),
