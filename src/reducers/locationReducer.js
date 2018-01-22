@@ -1,14 +1,11 @@
 import {
-  // GET_LOCATION,
+  GET_LOCATION,
   UPDATE_LOCATION,
-  GET_LOCATION_FAILED,
-  GET_CITY,
-  UPDATE_CITY,
-  GET_CITY_FAILED
+  GET_LOCATION_FAILED
 } from '../actions/types'
 
 const initialState = {
-  city: '',
+  loadingLocation: false,
   locationData: {},
   error: null,
   locationFetchState: 'NONE',
@@ -17,23 +14,14 @@ const initialState = {
 const locationReducer = (state=initialState, action) => {
 
   switch (action.type) {
-    // case GET_LOCATION:
-    //   return { ...state };
+    case GET_LOCATION:
+      return { ...state, loadingLocation: true };
 
     case UPDATE_LOCATION:
-      return { ...state, locationData: action.payload };
-
-    case UPDATE_CITY:
-      return { ...state, city: action.payload };
+      return { ...state, locationData: action.payload, loadingLocation: false };
 
     case GET_LOCATION_FAILED:
-      return { ...state, error: action.payload, locationFetchState: 'FAILED' };
-
-    case GET_CITY:
-      return { ...state };
-
-    case GET_CITY_FAILED:
-      return { ...state, error: action.payload, loading: false };
+      return { ...state, error: action.payload, locationFetchState: 'FAILED', loadingLocation: false };
 
     default:
       return state;

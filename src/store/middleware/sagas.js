@@ -1,6 +1,7 @@
 import { takeEvery, put, call, select } from 'redux-saga/effects';
 import * as weatherActions from '../../actions/weatherActions';
 import * as locationActions from '../../actions/locationActions';
+import * as cityActions from '../../actions/cityActions';
 
 import {
   GET_LOCATION,
@@ -28,17 +29,6 @@ function *getLocation(action) {
     yield* getCity(locationActions.getLocation());
 }
 
-function *getWeather(action) {
-  const getCoords = state => state.location.locationData.coords;
-  const coords = yield select(getCoords);
-  try {
-    const weather = yield call(getWeatherData, coords);
-    yield put({type: UPDATE_WEATHER, payload: weather});
-  } catch(error) {
-    yield put({type: GET_WEATHER_FAILED, payload: error});
-  }
-}
-
 function *getCity(action) {
   const getCoords = state => state.location.locationData.coords;
   const coords = yield select(getCoords);
@@ -50,6 +40,17 @@ function *getCity(action) {
   }
   yield* getWeather(locationActions.getLocation());
 
+}
+
+function *getWeather(action) {
+  const getCoords = state => state.location.locationData.coords;
+  const coords = yield select(getCoords);
+  try {
+    const weather = yield call(getWeatherData, coords);
+    yield put({type: UPDATE_WEATHER, payload: weather});
+  } catch(error) {
+    yield put({type: GET_WEATHER_FAILED, payload: error});
+  }
 }
 
 function *weatherSaga() {

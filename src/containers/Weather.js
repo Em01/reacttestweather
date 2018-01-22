@@ -71,10 +71,10 @@ class Weather extends Component {
 }
 
 export const mapStateToProps = (state) => {
-  const { weather, location } = state
+  const { weather, location, city } = state
   return {
     forecast: weather.weatherData.list,
-    city: location.city,
+    city: city.name,
     weatherFetchState: weather.weatherFetchState
   }
 }
