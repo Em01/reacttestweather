@@ -32,6 +32,7 @@ const extreme = {
 }
 
 export function weatherImage(code) {
+console.log(code)
   const codeCharacter = code.charAt(0)
   switch(codeCharacter) {
     case "2":
@@ -45,7 +46,7 @@ export function weatherImage(code) {
     case "7":
     return atmosphere;
     case "8":
-      if(code === 800) {
+      if(code === "800") {
         return sun;
       } else {
         return cloud;

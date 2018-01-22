@@ -29,26 +29,38 @@ class WeatherComponent extends Component {
   }
 
   getMainItem () {
-    const getItems = this.props.weatherData.list.slice(0, 3)
-    const mainWeather = _.first(getItems)
+    // const getItems = this.props.weatherData.list.slice(0, 3)
+    const mainWeather = _.first(this.props.weatherData.list)
     return mainWeather
   }
 
   getOtherItems() {
-    const getOtherItems = this.props.weatherData.list.slice(0, 3)
+    const getOtherItems = this.props.weatherData.list.slice(1, 4)
     return getOtherItems
+  }
+
+  timeText(id) {
+    switch(id) {
+      case 0:
+        return "3"
+      case 1:
+        return "6"
+      case 2:
+      return "9"
+    }
   }
 
   renderItems(otherItems) {
     return _.map(otherItems, (name, id) => {
+      console.log(otherItems, name, id, 'id')
       return (
         <div className="Item">
 
         <img className="Icon" src={weatherImage(name.weather[0].id.toString()).image}/>
         <div className="Details">
+          <p>{"+ " + this.timeText(id) + " Hours"}</p>
           <p>{this.temperature(name) + ' Celsius'}</p>
           <p>{this.humidity(name) + ' % Humidity'}</p>
-          <p>{name.dt_txt}</p>
         </div>
       </div>
 
@@ -62,20 +74,21 @@ class WeatherComponent extends Component {
       return (
         <div className="Loading">
           <img src={require('../images/cloud-large.png')}/>
-          <h2>Please wait while we get your weather!"</h2>
-
+          <h2>Loading...</h2>
         </div>
       )
     } else if(this.props.loadedWeather){
-      const weatherClass = weatherImage(this.props.weatherData.cod.toString())
       const mainItem = this.getMainItem()
+
+      const weatherClass = weatherImage(mainItem.weather[0].id.toString())
+      console.log(mainItem, 'mi')
       const otherItems = this.getOtherItems()
       return (
         <div className={weatherClass.name}>
           <div>
             <h1 className="City">{this.props.city}</h1>
             <div className="Description">{this.description(mainItem)}</div>
-            <img className="Icon" src={weatherImage(this.props.weatherData.cod.toString()).image}/>
+            <img className="Icon" src={weatherImage(mainItem.weather[0].id.toString()).image}/>
             <div className="Details">
             <p>{this.temperature(mainItem) + ' Celsius'}</p>
             <p>{this.humidity(mainItem) + ' % Humidity'}</p>
@@ -95,23 +108,13 @@ class WeatherComponent extends Component {
       )
     }
   }
-// </div>
-// return (
-//   <div className="WeatherComponent">
-//     {this.loading()}
-//   </div>
 
   render() {
-    return (
-
-    <div className="Loading">
-      <img src={require('../images/cloud-large.png')}/>
-      <h2 className="LoadingText">Loading...</h2>
-    </div>
+      return (
+        <div className="WeatherComponent">
+          {this.loading()}
+        </div>
     )
-
-
-    // );
   }
 }
 
