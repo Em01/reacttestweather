@@ -9,48 +9,13 @@ import { weatherImage } from './helpers/weatherImage';
 import '../styles/components/WeatherComponent.css';
 import _ from 'underscore'
 
+import Spinner from './Spinner'
 import WeatherItem from './WeatherItem'
-
+import { formatWeatherDescription, formatTemperature, formatHumidity, getMainWeather, getUpcomingWeather, timeText } from './helpers/formatWeatherData';
 class WeatherComponent extends Component {
 
   componentDidMount() {
     this.props.locationActions.getLocation()
-  }
-
-  description(mainItem) {
-    const description = mainItem.weather[0].description
-    const formatDescription = description.charAt(0).toUpperCase();
-    return formatDescription + description.slice(1);
-  }
-
-  temperature(mainItem) {
-    return mainItem.main.temp.toFixed(1)
-  }
-
-  humidity(mainItem) {
-    return mainItem.main.humidity
-  }
-
-  getMainItem () {
-    // const getItems = this.props.weatherData.list.slice(0, 3)
-    const mainWeather = _.first(this.props.weatherData.list)
-    return mainWeather
-  }
-
-  getOtherItems() {
-    const getOtherItems = this.props.weatherData.list.slice(1, 4)
-    return getOtherItems
-  }
-
-  timeText(id) {
-    switch(id) {
-      case 0:
-        return "3"
-      case 1:
-        return "6"
-      case 2:
-      return "9"
-    }
   }
 
   renderItems(otherItems) {
@@ -62,10 +27,10 @@ class WeatherComponent extends Component {
           type={"small"}
           id={id}
           city={this.props.city}
-          description={this.description(name)}
-          temperature={this.temperature(name)}
-          humidity={this.humidity(name)}
-          time={this.timeText(id)}
+          description={formatWeatherDescription(name)}
+          temperature={formatTemperature(name)}
+          humidity={formatHumidity(name)}
+          time={timeText(id)}
           image={weatherImage(name.weather[0].id.toString()).image}
         />
     </div>
@@ -78,26 +43,21 @@ class WeatherComponent extends Component {
 
     if(this.props.loadingWeather || this.props.loadingLocation) {
       return (
-        <div className="Loading">
-          <img src={require('../images/cloud-large.png')}/>
-          <h2>Loading...</h2>
-        </div>
+        <Spinner />
       )
     } else if(this.props.loadedWeather){
-      const mainItem = this.getMainItem()
-      // const
+      const mainItem = getMainWeather(this.props.weatherData.list)
       const weatherClass = weatherImage(mainItem.weather[0].id.toString())
-      console.log(mainItem, 'mi')
-      const otherItems = this.getOtherItems()
+      const otherItems = getUpcomingWeather(this.props.weatherData.list)
 
       return (
         <div className={weatherClass.name}>
           <WeatherItem
             type={"large"}
             city={this.props.city}
-            description={this.description(mainItem)}
-            temperature={this.temperature(mainItem)}
-            humidity={this.humidity(mainItem)}
+            description={formatWeatherDescription(mainItem)}
+            temperature={formatTemperature(mainItem)}
+            humidity={formatHumidity(mainItem)}
             image={weatherImage(mainItem.weather[0].id.toString()).image}
           />
 

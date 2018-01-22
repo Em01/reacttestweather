@@ -1,40 +1,41 @@
 import React, { Component } from 'react';
 import '../styles/components/WeatherComponent.css';
 
-class WeatherItem extends Component {
+  export function showCity(type, city, description) {
 
-  showCity() {
-    if(this.props.type === "large") {
+    if(type === "large") {
       return (
         <div>
-        <h1 className="City">{this.props.city}</h1>
-        <div className="Description">{this.props.description}</div>
+        <h1 className="City">{city}</h1>
+        <div className="Description">{description}</div>
       </div>
       )
     }
   }
 
-  showTime(time) {
-    if(this.props.type ==="small") {
+  export function showTime(time, type) {
+    if(type ==="small") {
       return (
         <p>{"+ " + time + " Hours"}</p>
 
       )
     }
   }
-  render() {
-    return (
-        <div>
-          {this.showCity()}
-          <img className="Icon" src={this.props.image}/>
-          <div className="Details">
-            {this.showTime(this.props.time)}
-          <p>{this.props.temperature + " Celsius"}</p>
-          <p>{this.props.humidity + " % Humidity"}</p>
-        </div>
+
+
+const WeatherItem = ({image, time, temperature, humidity, type, city, description}) => {
+  return (
+      <div>
+        {showCity(type, city, description)}
+        <img className="Icon" src={image}/>
+        <div className="Details">
+          {showTime(time, type)}
+        <p>{temperature + " Celsius"}</p>
+        <p>{humidity + " % Humidity"}</p>
       </div>
-    )
-  }
+    </div>
+  )
+
 }
 
 export default WeatherItem
