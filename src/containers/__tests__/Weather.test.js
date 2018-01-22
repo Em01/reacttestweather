@@ -3,7 +3,7 @@ import { shallow } from 'enzyme'
 
 import configureStore from 'redux-mock-store';
 
-import { WeatherComponent } from '../WeatherComponent'
+import { Weather } from '../Weather'
 import { Provider } from 'react-redux';
 
 const mockStore = configureStore({})
@@ -13,11 +13,11 @@ const props = {
 
 }
 
-describe('WeatherComponent', () => {
+describe('Weather', () => {
   var component;
 
   beforeAll(() => {
-    component = shallow(<Provider store={store}><WeatherComponent {...props}/></Provider>)
+    component = shallow(<Provider store={store}><Weather {...props}/></Provider>)
   })
 
   describe('render', () => {

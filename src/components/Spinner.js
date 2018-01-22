@@ -1,15 +1,13 @@
-import React from 'react'
-import '../styles/components/WeatherComponent.css';
+import React from 'react';
+import '../styles/components/Spinner.css';
 
 const Spinner = () => {
-
   return (
-    <div className="Loading">
-      <img src={require('../images/cloud-large.png')}/>
-      <h2>Loading...</h2>
+    <div className="Spinner">
+      <img src={require('../images/cloud.png')}/>
+      <h2 className="SpinnerText">Loading...</h2>
     </div>
-  )
-
+  );
 }
 
-export default Spinner
+export default Spinner;

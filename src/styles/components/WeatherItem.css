@@ -1,0 +1,16 @@
+.Icon {
+  margin: 12px;
+}
+
+.City {
+  margin-top: 25px;
+  display: inline-block;
+}
+
+.Description {
+  font-size: 20px;
+}
+
+p {
+  margin: 2px;
+}

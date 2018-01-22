@@ -1,0 +1,51 @@
+.Weather {
+  height: 100%;
+}
+
+.Storm {
+  height: 100%;
+  background-color: #808080;
+}
+.Drizzle {
+  height: 100%;
+  background-color: #d8d8ff;
+}
+
+.Rain {
+  height: 100%;
+  background-color: #4040ff;
+}
+
+.Snow {
+  height: 100%;
+  background-color: #fffafa;
+}
+
+.Atmosphere {
+  height: 100%;
+  background-color: #ffa8a8;
+}
+
+.Sun {
+  height: 100%;
+  background-color: #f9fa57;
+}
+
+.Cloud {
+  height: 100%;
+  background-color: #cccccc;
+}
+
+.Extreme {
+  height: 100%;
+  background-color: #ff4040;
+}
+
+.UpcomingWrapper {
+  margin-top: 30px;
+  display: inline-flex;
+}
+
+.UpcomingText {
+  margin-top: 40px;
+}
