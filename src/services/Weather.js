@@ -7,7 +7,7 @@ export function getWeatherData(coords) {
 
   const lat = coords.latitude;
   const lon = coords.longitude;
-  var weatherAPIUrl = ROOT_URL + `weather?lat=${lat}&lon=${lon}&appid=${API_KEY}&units=metric`;
+  var weatherAPIUrl = ROOT_URL + `forecast?lat=${lat}&lon=${lon}&appid=${API_KEY}&units=metric`;
 
   return fetch(weatherAPIUrl)
   .then((response) => response.json())
