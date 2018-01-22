@@ -8,6 +8,9 @@ import { connect } from 'react-redux';
 import { weatherImage } from './helpers/weatherImage';
 import '../styles/components/WeatherComponent.css';
 import _ from 'underscore'
+
+import WeatherItem from './WeatherItem'
+
 class WeatherComponent extends Component {
 
   componentDidMount() {
@@ -54,15 +57,18 @@ class WeatherComponent extends Component {
     return _.map(otherItems, (name, id) => {
       console.log(otherItems, name, id, 'id')
       return (
-        <div className="Item">
-
-        <img className="Icon" src={weatherImage(name.weather[0].id.toString()).image}/>
-        <div className="Details">
-          <p>{"+ " + this.timeText(id) + " Hours"}</p>
-          <p>{this.temperature(name) + ' Celsius'}</p>
-          <p>{this.humidity(name) + ' % Humidity'}</p>
-        </div>
-      </div>
+      <div className="Item">
+        <WeatherItem
+          type={"small"}
+          id={id}
+          city={this.props.city}
+          description={this.description(name)}
+          temperature={this.temperature(name)}
+          humidity={this.humidity(name)}
+          time={this.timeText(id)}
+          image={weatherImage(name.weather[0].id.toString()).image}
+        />
+    </div>
 
       )
     });
@@ -79,21 +85,21 @@ class WeatherComponent extends Component {
       )
     } else if(this.props.loadedWeather){
       const mainItem = this.getMainItem()
-
+      // const
       const weatherClass = weatherImage(mainItem.weather[0].id.toString())
       console.log(mainItem, 'mi')
       const otherItems = this.getOtherItems()
+
       return (
         <div className={weatherClass.name}>
-          <div>
-            <h1 className="City">{this.props.city}</h1>
-            <div className="Description">{this.description(mainItem)}</div>
-            <img className="Icon" src={weatherImage(mainItem.weather[0].id.toString()).image}/>
-            <div className="Details">
-            <p>{this.temperature(mainItem) + ' Celsius'}</p>
-            <p>{this.humidity(mainItem) + ' % Humidity'}</p>
-          </div>
-          </div>
+          <WeatherItem
+            type={"large"}
+            city={this.props.city}
+            description={this.description(mainItem)}
+            temperature={this.temperature(mainItem)}
+            humidity={this.humidity(mainItem)}
+            image={weatherImage(mainItem.weather[0].id.toString()).image}
+          />
 
           <h2 className="Soon">Coming up...</h2>
 
