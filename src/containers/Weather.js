@@ -4,8 +4,11 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import * as weatherActions from '../actions/weatherActions';
 import * as locationActions from '../actions/locationActions';
-import Spinner from '../components/Spinner';
+
 import WeatherItem from '../components/WeatherItem';
+import WeatherError from '../components/WeatherError';
+import Spinner from '../components/Spinner';
+
 import { weatherImage } from './helpers/weatherImage';
 import {
   formatWeatherDescription,
@@ -79,12 +82,13 @@ class Weather extends Component {
       return;
     }
   }
+  // {this.loading()}
 
   render() {
     return (
       <div className="Weather">
-        {this.loading()}
-      </div>
+      <WeatherError />
+     </div>
     );
   }
 }
