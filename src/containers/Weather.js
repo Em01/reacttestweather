@@ -1,14 +1,8 @@
 import _ from 'underscore';
 import React, { Component } from 'react';
-import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import * as weatherActions from '../actions/weatherActions';
-import * as locationActions from '../actions/locationActions';
-
 import WeatherItem from '../components/WeatherItem';
 import WeatherError from '../components/WeatherError';
-import Spinner from '../components/Spinner';
-
 import { weatherImage } from './helpers/weatherImage';
 import {
   formatWeatherDescription,
@@ -21,10 +15,6 @@ import {
 import '../styles/containers/Weather.css';
 
 class Weather extends Component {
-
-  componentDidMount() {
-    this.props.locationActions.getLocation();
-  }
 
   renderItem(type, details, id) {
     const { city } = this.props;
@@ -50,47 +40,31 @@ class Weather extends Component {
     });
   }
 
-  loading() {
-    const {
-      loadingWeather,
-      loadingLocation,
-      loadedWeather,
-      forecast
-    } = this.props;
-    console.log(this.props, 'p')
-    if(loadingWeather || loadingLocation) {
-      return (
-        <Spinner />
-      );
-    } else if(loadedWeather) {
-      console.log('loadedWeather')
-      const details = getMainWeather(forecast);
-      const weatherClass = weatherImage(details.weather[0].id.toString());
-      const upcomingItems = getUpcomingWeather(forecast);
+  renderError() {
+    return ( <WeatherError /> );
+  }
 
-      return (
-        <div className={weatherClass.name}>
-          {this.renderItem("large", details, null)}
-          <h2 className="UpcomingText">Coming up...</h2>
-          <div className="UpcomingWrapper">
-          {this.renderItems(upcomingItems)}
-          </div>
+  renderWeather() {
+    const { forecast } = this.props;
+    const details = getMainWeather(forecast);
+    const weatherClass = weatherImage(details.weather[0].id.toString());
+    const upcomingItems = getUpcomingWeather(forecast);
+
+    return (
+      <div className={weatherClass.name}>
+        {this.renderItem("large", details, null)}
+        <h2 className="UpcomingText">Coming up...</h2>
+        <div className="UpcomingWrapper">
+        {this.renderItems(upcomingItems)}
         </div>
-      );
-    }
-    else if(this.props.weatherFetchState === 'FAILED') {
-      return (
-         <WeatherError />
-       )
-    } else {
-      return;
-    }
+      </div>
+    );
   }
 
   render() {
     return (
       <div className="Weather">
-        {this.loading()}
+        {this.props.fetchState === 'FAILED' ? this.renderError() : this.renderWeather()}
      </div>
     );
   }
@@ -100,19 +74,9 @@ export const mapStateToProps = (state) => {
   const { weather, location } = state
   return {
     forecast: weather.weatherData.list,
-    loadedWeather: weather.loadedWeather,
-    loadingWeather: weather.loadingWeather,
-    loadingLocation: location.loadingLocation,
     city: location.city,
     weatherFetchState: weather.weatherFetchState
   }
 }
 
-export const mapDispatchToProps = (dispatch) => {
-  return {
-    weatherActions: bindActionCreators(weatherActions, dispatch),
-    locationActions: bindActionCreators(locationActions, dispatch),
-  }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Weather);
+export default connect(mapStateToProps)(Weather);
