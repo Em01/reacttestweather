@@ -1,9 +1,7 @@
 ![](src/images/loading.png?raw=true)
 ![](src/images/error.png?raw=true)
-![](src/images/sunScreen.png?raw=true)
 ![](src/images/clouds-screenshot.png?raw=true)
 ![](src/images/s-screenshot.png?raw=true)
-
 ![](src/images/screen-rain.png?raw=true)
 ![](src/images/screen-snow.png?raw=true)
 ![](src/images/screen-sun.png?raw=true)
