@@ -1,5 +1,4 @@
 import _ from 'underscore';
-var ReactDOM = require('react-dom');
 
 export function getLocationData() {
   return new Promise((resolve, reject) => {
@@ -17,7 +16,7 @@ export function getReverseGeolocation(coords) {
   return new Promise(function(resolve, reject) {
 
     geocoder.geocode({ 'latLng': latlng }, function (results, status) {
-      if (status == window.google.maps.GeocoderStatus.OK) {
+      if (status === window.google.maps.GeocoderStatus.OK) {
         const address = results.length >= 4 ? results[4].formatted_address : _.first(results).formatted_address
         resolve(address)
       } else {

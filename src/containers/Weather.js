@@ -10,33 +10,32 @@ import {
   formatHumidity,
   getMainWeather,
   getUpcomingWeather,
-  timeText
+  formatTime
 } from './helpers/formatWeatherData';
 import '../styles/containers/Weather.css';
 
 class Weather extends Component {
 
-  renderItem(type, details, id) {
+  renderItem(type, details, id, key) {
     const { city } = this.props;
     return (
-      <div className="Item">
-        <WeatherItem
-          type={type}
-          id={id}
-          city={city}
-          description={formatWeatherDescription(details)}
-          temperature={formatTemperature(details)}
-          humidity={formatHumidity(details)}
-          time={timeText(id)}
-          image={weatherImage(details.weather[0].id.toString()).image}
-        />
-      </div>
+      <WeatherItem
+        key={key}
+        type={type}
+        city={city}
+        description={formatWeatherDescription(details)}
+        temperature={formatTemperature(details)}
+        humidity={formatHumidity(details)}
+        time={formatTime(id)}
+        image={weatherImage(details.weather[0].id.toString()).image}
+      />
     );
   }
 
   renderItems(otherItems) {
     return _.map(otherItems, (details, id) => {
-      return this.renderItem("small", details, id)
+      const key = details.dt.toString();
+      return this.renderItem("small", details, id, key);
     });
   }
 
@@ -71,7 +70,7 @@ class Weather extends Component {
 }
 
 export const mapStateToProps = (state) => {
-  const { weather, location, city } = state
+  const { weather, city } = state
   return {
     forecast: weather.weatherData.list,
     city: city.name,

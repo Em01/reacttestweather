@@ -19,5 +19,7 @@
 }
 
 .SpinnerText {
+  font-size: 40px;
+  color: #3498db;
   margin-top: 30px;
 }

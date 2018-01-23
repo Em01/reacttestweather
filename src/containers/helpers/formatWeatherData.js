@@ -15,22 +15,30 @@ export function formatHumidity(item) {
 }
 
 export function getMainWeather(forecastItems) {
-  const item = _.first(forecastItems)
-  return item
+  const item = _.first(forecastItems);
+  return item;
 }
 
 export function getUpcomingWeather(forecastItems) {
-  const itemList = forecastItems.slice(1, 4)
-  return itemList
+  const itemList = forecastItems.slice(1, 4);
+  return itemList;
 }
 
-export function timeText(id) {
+export function getTime(id) {
   switch(id) {
     case 0:
-      return "3"
+      return "3";
     case 1:
-      return "6"
+      return "6";
     case 2:
-    return "9"
+      return "9";
+    default:
+      return "error";
   }
+}
+
+export function formatTime(id) {
+  const errorText = "Cant find the time";
+  const time = getTime(id) === "error" ? errorText : getTime(id);
+  return time;
 }

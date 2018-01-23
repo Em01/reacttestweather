@@ -1,34 +1,42 @@
 const storm = {
   image: require('../../images/storm.png'),
-  name: "Storm"
+  name: "Storm",
+  id: 0
 };
 const drizzle = {
   image: require('../../images/drizzle.png'),
-  name: "Drizzle"
+  name: "Drizzle",
+  id: 1
 };
 const rain = {
   image: require('../../images/rain.png'),
-  name: "Rain"
+  name: "Rain",
+  id: 2
 };
 const snow = {
   image: require('../../images/snow.png'),
-  name: "Snow"
+  name: "Snow",
+  id: 3
 };
 const atmosphere = {
   image: require('../../images/atmosphere.png'),
-  name: "Atmosphere"
+  name: "Atmosphere",
+  id: 4
 };
 const sun = {
   image: require('../../images/sun.png'),
-  name: "Sun"
+  name: "Sun",
+  id: 5
 };
 const cloud = {
   image: require('../../images/cloud.png'),
-  name: "Cloud"
+  name: "Cloud",
+  id: 6
 };
 const extreme = {
   image: require('../../images/extreme.png'),
-  name: "extreme"
+  name: "extreme",
+  id: 7
 };
 
 export function weatherImage(code) {

@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import '../styles/components/WeatherItem.css';
 
 export function showCity(type, city, description) {
@@ -21,11 +21,11 @@ export function showTime(time, type) {
 }
 
 const WeatherItem = (props) => {
-  const { image, time, temperature, humidity, type, city, description } = props;
+  const { image, time, temperature, humidity, type, city, description} = props;
   return (
     <div>
       {showCity(type, city, description)}
-      <img className="Icon" src={image}/>
+      <img className="Icon" src={image} alt={"icon"} />
       <div>
         {showTime(time, type)}
         <p>{temperature + " Celsius"}</p>
