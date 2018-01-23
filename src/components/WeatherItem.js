@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import '../styles/components/weather_item.css';
 
@@ -35,4 +36,12 @@ const WeatherItem = (props) => {
   );
 }
 
+WeatherItem.propTypes - {
+  city: PropTypes.string,
+  description: PropTypes.string,
+  humidity: PropTypes.number,
+  image: PropTypes.number,
+  time: PropTypes.number,
+  type: PropTypes.string
+}
 export default WeatherItem;

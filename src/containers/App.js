@@ -1,5 +1,5 @@
+import PropTypes from 'prop-types';
 import React, { Component } from 'react';
-
 import * as locationActions from '../actions/locationActions';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
@@ -26,6 +26,10 @@ export class App extends Component {
       </div>
     );
   }
+}
+
+App.PropTypes = {
+  weatherFetchState: PropTypes.function
 }
 
 export const mapStateToProps = (state) => {

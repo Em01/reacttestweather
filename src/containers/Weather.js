@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import _ from 'underscore';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
@@ -66,6 +67,12 @@ export class Weather extends Component {
      </div>
     );
   }
+}
+
+WeatherItem.propTypes = {
+  city: PropTypes.string,
+  forecast: PropTypes.array,
+  weatherFetchState: PropTypes.string
 }
 
 export const mapStateToProps = (state) => {
