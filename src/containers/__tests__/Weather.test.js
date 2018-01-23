@@ -1,7 +1,7 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 import { Weather, mapStateToProps } from '../Weather'
-const weatherData = require('./data/weatherData')
+const weatherData = require('../../../jest/data/weather_data')
 const props = {
   city: "London",
   forecast: weatherData

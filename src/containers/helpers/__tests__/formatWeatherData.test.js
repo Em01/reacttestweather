@@ -7,7 +7,7 @@ import {
   getUpcomingWeather,
   formatTime
 } from '../formatWeatherData';
-const item = require('../../__tests__/data/weatherData');
+const item = require('../../../data/weather_data');
 const weatherItem = _.first(item);
 
 describe('formatWeatherDescription', () => {

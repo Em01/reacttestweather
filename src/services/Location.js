@@ -11,17 +11,15 @@ export function getReverseGeolocation(coords) {
     lat: coords.latitude,
     lng: coords.longitude
   }
-
-  var geocoder = new window.google.maps.Geocoder()
+  var geocoder = new window.google.maps.Geocoder();
   return new Promise(function(resolve, reject) {
-
     geocoder.geocode({ 'latLng': latlng }, function (results, status) {
       if (status === window.google.maps.GeocoderStatus.OK) {
-        const address = results.length >= 4 ? results[4].formatted_address : _.first(results).formatted_address
-        resolve(address)
+        const address = results.length >= 4 ? results[4].formatted_address : _.first(results).formatted_address;
+        resolve(address);
       } else {
-        reject(status)
+        reject(status);
       }
-    })
-  })
+    });
+  });
 }
