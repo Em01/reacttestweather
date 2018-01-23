@@ -1,0 +1,67 @@
+[
+  {
+    "dt": 1516687205,
+    "dt_txt": "2018-01-23 06:00:00",
+    "main": {
+      "humidity": 56,
+      "temp": 37.99
+    },
+    "weather": [{
+      "id": 800,
+      "main": "Clear",
+      "description": "clear sky"
+    }]
+  },
+  {
+    "dt": 1516687206,
+    "dt_txt": "2018-01-23 06:00:00",
+    "main": {
+      "humidity": 56,
+      "temp": 37.99
+    },
+    "weather": [{
+      "id": 800,
+      "main": "Clear",
+      "description": "clear sky"
+    }]
+  },
+  {
+    "dt": 1516687207,
+    "dt_txt": "2018-01-23 06:00:00",
+    "main": {
+      "humidity": 56,
+      "temp": 37.99
+    },
+    "weather": [{
+      "id": 800,
+      "main": "Clear",
+      "description": "clear sky"
+    }]
+  },
+  {
+    "dt": 1516687208,
+    "dt_txt": "2018-01-23 06:00:00",
+    "main": {
+      "humidity": 56,
+      "temp": 37.99
+    },
+    "weather": [{
+      "id": 800,
+      "main": "Clear",
+      "description": "clear sky"
+    }]
+  },
+  {
+    "dt": 1516687209,
+    "dt_txt": "2018-01-23 06:00:00",
+    "main": {
+      "humidity": 56,
+      "temp": 37.99
+    },
+    "weather": [{
+      "id": 800,
+      "main": "Clear",
+      "description": "clear sky"
+    }]
+  }
+]

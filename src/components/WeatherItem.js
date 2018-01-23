@@ -1,12 +1,12 @@
 import React from 'react';
-import '../styles/components/WeatherItem.css';
+import '../styles/components/weather_item.css';
 
 export function showCity(type, city, description) {
   if(type === "large") {
     return (
       <div>
-        <h1 className="City">{city}</h1>
-        <div className="Description">{description}</div>
+        <h1 className="city">{city}</h1>
+        <div className="description">{description}</div>
       </div>
     );
   }
@@ -25,11 +25,11 @@ const WeatherItem = (props) => {
   return (
     <div>
       {showCity(type, city, description)}
-      <img className="Icon" src={image} alt={"icon"} />
+      <img className="icon" src={image} alt={"icon"} />
       <div>
         {showTime(time, type)}
         <p>{temperature + " Celsius"}</p>
-        <p>{humidity + " % Humidity"}</p>
+        <p>{humidity + "% Humidity"}</p>
       </div>
     </div>
   );

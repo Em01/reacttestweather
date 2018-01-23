@@ -1,51 +1,51 @@
-.Weather {
+.weather {
   height: 100%;
 }
 
-.Storm {
+.storm {
   height: 100%;
   background-color: #808080;
 }
-.Drizzle {
+.drizzle {
   height: 100%;
   background-color: #d8d8ff;
 }
 
-.Rain {
+.rain {
   height: 100%;
   background-color: #4040ff;
 }
 
-.Snow {
+.snow {
   height: 100%;
   background-color: #fffafa;
 }
 
-.Atmosphere {
+.atmosphere {
   height: 100%;
   background-color: #ffa8a8;
 }
 
-.Sun {
+.sun {
   height: 100%;
   background-color: #f9fa57;
 }
 
-.Cloud {
+.cloud {
   height: 100%;
   background-color: #cccccc;
 }
 
-.Extreme {
+.extreme {
   height: 100%;
   background-color: #ff4040;
 }
 
-.UpcomingWrapper {
+.upcoming-wrapper {
   margin-top: 30px;
   display: inline-flex;
 }
 
-.UpcomingText {
+.upcoming-text {
   margin-top: 40px;
 }

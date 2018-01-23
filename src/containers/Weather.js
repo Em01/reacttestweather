@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import WeatherItem from '../components/WeatherItem';
 import WeatherError from '../components/WeatherError';
-import { weatherImage } from './helpers/weatherImage';
+import { weatherImage } from './helpers/weatherDetails';
 import {
   formatWeatherDescription,
   formatTemperature,
@@ -12,9 +12,9 @@ import {
   getUpcomingWeather,
   formatTime
 } from './helpers/formatWeatherData';
-import '../styles/containers/Weather.css';
+import '../styles/containers/weather.css';
 
-class Weather extends Component {
+export class Weather extends Component {
 
   renderItem(type, details, id, key) {
     const { city } = this.props;
@@ -48,12 +48,11 @@ class Weather extends Component {
     const details = getMainWeather(forecast);
     const weatherClass = weatherImage(details.weather[0].id.toString());
     const upcomingItems = getUpcomingWeather(forecast);
-
     return (
       <div className={weatherClass.name}>
         {this.renderItem("large", details, null)}
-        <h2 className="UpcomingText">Coming up...</h2>
-        <div className="UpcomingWrapper">
+        <h2 className="upcoming-text">Coming up...</h2>
+        <div className="upcoming-wrapper">
         {this.renderItems(upcomingItems)}
         </div>
       </div>
@@ -62,7 +61,7 @@ class Weather extends Component {
 
   render() {
     return (
-      <div className="Weather">
+      <div className="weather">
         {this.props.fetchState === 'FAILED' ? this.renderError() : this.renderWeather()}
      </div>
     );

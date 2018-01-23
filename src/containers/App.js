@@ -4,11 +4,11 @@ import * as locationActions from '../actions/locationActions';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-import Spinner from './Spinner';
-import ErrorBoundary from './common/ErrorBoundary';
-import Weather from '../containers/Weather';
+import Spinner from '../components/Spinner';
+import ErrorBoundary from '../components/common/ErrorBoundary';
+import Weather from './Weather';
 
-import '../styles/components/App.css';
+import '../styles/containers/app.css';
 
 export class App extends Component {
 
@@ -19,7 +19,7 @@ export class App extends Component {
   render() {
     const  { weatherFetchState } = this.props;
     return (
-      <div className="App">
+      <div className="app">
         <ErrorBoundary>
           { weatherFetchState === "SUCCESS" ? <Weather /> : <Spinner /> }
         </ErrorBoundary>
@@ -29,7 +29,6 @@ export class App extends Component {
 }
 
 export const mapStateToProps = (state) => {
-  // console.l
   return {
     weatherFetchState: state.weather.weatherFetchState
   }
