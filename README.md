@@ -1,5 +1,6 @@
 ![](src/images/loading.png?raw=true)
 ![](src/images/error.png?raw=true)
+![](src/images/sunScreen.png?raw=true)
 ![](src/images/screen-clouds.png?raw=true)
 ![](src/images/screen-rain.png?raw=true)
 ![](src/images/screen-snow.png?raw=true)
