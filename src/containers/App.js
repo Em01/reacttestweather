@@ -30,18 +30,18 @@ export class App extends Component {
 
 App.PropTypes = {
   weatherFetchState: PropTypes.function
-}
+};
 
 export const mapStateToProps = (state) => {
   return {
     weatherFetchState: state.weather.weatherFetchState
-  }
-}
+  };
+};
 
 export const mapDispatchToProps = (dispatch) => {
   return {
     locationActions: bindActionCreators(locationActions, dispatch)
-  }
-}
+  };
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

@@ -43,5 +43,6 @@ WeatherItem.propTypes - {
   image: PropTypes.number,
   time: PropTypes.number,
   type: PropTypes.string
-}
+};
+
 export default WeatherItem;

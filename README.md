@@ -1,3 +1,10 @@
+![](src/images/loading.png?raw=true)
+![](src/images/error.png?raw=true)
+![](src/images/screen-clouds.png?raw=true)
+![](src/images/screen-rain.png?raw=true)
+![](src/images/screen-snow.png?raw=true)
+![](src/images/screen-sun.png?raw=true)
+
 # Instructions
 
 Create a simple react app that tells the user what the weather is like on their location. You will need to acquire the location and the weather seperately. The location should be acquired from the browsers location api. The weather can be obtained from openweathermap.org. Sign up for a free account there and use their API to get the weather. See https://openweathermap.org/api for more details
