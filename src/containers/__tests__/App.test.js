@@ -15,7 +15,7 @@ describe('App', () => {
     component = shallow(<App {...props}/>);
   });
 
-  describe('when the fetchState is success', () => {
+  describe('when the fetchState is not none', () => {
     beforeAll(() => {
       component.setProps({ weatherFetchState: "SUCCESS" });
     });
@@ -29,9 +29,9 @@ describe('App', () => {
     });
   });
 
-  describe('when the fetchState is not success', () => {
+  describe('when the fetchState is none', () => {
     beforeAll(() => {
-      component.setProps({ weatherFetchState: undefined });
+      component.setProps({ weatherFetchState: 'NONE' });
     });
 
     it('has the Spinner', () => {

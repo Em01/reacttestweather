@@ -21,7 +21,7 @@ export class App extends Component {
     return (
       <div className="app">
         <ErrorBoundary>
-          { weatherFetchState === "SUCCESS" ? <Weather /> : <Spinner /> }
+          { weatherFetchState === "NONE" ? <Spinner /> : <Weather /> }
         </ErrorBoundary>
       </div>
     );
